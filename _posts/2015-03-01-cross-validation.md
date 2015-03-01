@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "How Many Folds for Cross-Validation"
+excerpt: "Cross-Validation is a method for estimating the performance of a classifier for unseen data. In this post, we will try to figure out how many folds that are should be used for cross-validation."
 date:   2015-03-01 14:47:10
 categories: statistics experiment
 ---
