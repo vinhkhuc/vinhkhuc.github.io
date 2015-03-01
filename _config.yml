@@ -1,6 +1,6 @@
 # Site settings
 title: ml blog | machine learning
-email:
+email: knvinh_gmail_com
 description: ""
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://vinhkhuc.github.io" # the base hostname & protocol for your site
@@ -10,4 +10,4 @@ github_username: vinhkhuc
 # Build settings
 markdown: kramdown
 
-# highlighter: rouge
+#highlighter: rouge
