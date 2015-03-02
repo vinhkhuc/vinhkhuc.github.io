@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "How Many Folds for Cross-Validation"
 excerpt: "Cross-Validation is a method for estimating the performance of a classifier for unseen data. In this post, we will try to figure out how many folds that are should be used for cross-validation."
 date:   2015-03-01 14:47:10
@@ -22,7 +23,7 @@ of K is N, where N is the total number of training data points in the data set
 costly to compute.
 
 In practice, we usually use **K = 5, 10 or 20** since these K-fold CVs give approximately the same accuracy
-estimation as LOOCV but without costly computation. Experiments show that K = 10 is the best choice as we will see below.
+estimation as LOOCV but without costly computation.
 
 The Figure 2 shows Ron Kohavi's experiment with CV using different values of K for the decision tree classifier C4.5
 on different data sets. The gray regions indicate confidence intervals for the true accuracies. The negative K stands
