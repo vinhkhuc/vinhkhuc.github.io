@@ -29,7 +29,7 @@ The Figure 2 shows Ron Kohavi's experiment with CV using different values of
 on different data sets. The gray regions indicate confidence intervals for the true accuracies. The negative K stands
 for Leave-K-Out.
 
-<div style="text-align:center;">
+<div class="center-figure">
     <img src="/assets/2015-03-01-cross-validation/ron-kohavi-experiment.png" width="65%" height="65%">
     <p>
         <em>Figure 2: Ron Kohavi. A study of cross-validation and bootstrap for accuracy estimation and model selection. IJCAI '95.</em>
@@ -45,7 +45,7 @@ Here is the Python code to replicate Ron Kohavi's experiment on the [Iris data s
 As we can see in the Figure 3, the good value of K is 10 since it gives the best trade-off between the running speed
 and the accuracy estimation.
 
-<div style="text-align:center;">
+<div class="center-figure">
     <img src="/assets/2015-03-01-cross-validation/cross-validation-experiment-iris.png" width="75%" height="75%">
     <p><em>Figure 3: Cross-validation experiment on the Iris data set.</p></em>
 </div>
