@@ -25,17 +25,17 @@ h &= \sigma(x W_1 + b_1) \\
 \end{align}
 $$
 
-where $$\sigma$$ and $$\varphi$$ are activiation functions for the hidden layer and output layer respectively.
+where $$\sigma$$ and $$\varphi$$ are activation functions for the hidden layer and output layer respectively.
 
-Given a training data set $$\{(x_i, y_i)\}_{i=1}^N$$, the loss function $$L(Y, \hat{Y})$$ is defined based on the learning task. 
+Given a training data set $$D = \{(x_i, y_i)\}_{i=1}^N$$, the loss function $$L(Y, \hat{Y})$$ is defined based on the learning task. 
 For regression task, the loss function is usually defined as Mean Squared Error (**MSE**) while Cross Entropy (**CE**) 
 is often used for classification task.  
 
 $$
-\begin{align}
-MSE(Y, \hat{Y}) &= \frac{1}{N}\sum_{i=1}^N(y_i - \hat{y_i})^2 (1)\\
-CE(Y, \hat{Y})  &= -\sum_{i=1}^Ny_i \log\hat{y_i} (2)
-\end{align}
+\begin{alignat} {2}
+L(Y, \hat{Y}) &= MSE(Y, \hat{Y}) &&= \frac{1}{N}\sum_{i=1}^N(y_i - \hat{y_i})^2 \quad (1)\\
+L(Y, \hat{Y}) &= \quad CE(Y, \hat{Y})  &&= -\sum_{i=1}^Ny_i \log\hat{y_i} \qquad \ (2)
+\end{alignat}
 $$
 
 Training MLP networks is about finding values for the weight matrices $$W_1$$, $$W_2$$ and bias vectors $$b_1$$, $$b_2$$ to minimize 
@@ -45,11 +45,27 @@ Stochastic Gradient Descent (**SGD**) to get avoid of local minima and saddle po
 In SGD, at each iteration we randomly pick a training data point $$(x_i, y_i)$$ to update the parameters using the following formula:
 
 $$
-W = W - \mu \frac{\partial L}{\partial W}, b = b - \mu \frac{\partial L}{\partial b}
+\begin{alignat} {2}
+W_1 &= W_1 - \mu \frac{\partial L}{\partial W_1},\quad b_1 &&= b_1 - \mu \frac{\partial L}{\partial b_1} \\
+W_2 &= W_2 - \mu \frac{\partial L}{\partial W_2},\quad b_2 &&= b_2 - \mu \frac{\partial L}{\partial b_2}
+\end{alignat}
 $$
 
-note that now $$N=1$$ in (1) and (2).
+where $$\mu$$ is the learning rate, and now $$N=1$$ in $$(1)$$ and $$(2)$$.
 
+We will apply the chain rule to derive the derivatives:
+
+$$
+\begin{align}
+\frac{\partial L}{\partial W_1} &= \frac{\partial L}{\partial \hat{y}} \ \frac{\partial \hat{y}}{\partial h} \ \frac{\partial h}{\partial W_1} \\
+\frac{\partial L}{\partial W_2} &= \frac{\partial L}{\partial \hat{y}} \ \frac{\partial \hat{y}}{\partial W_2}
+\end{align}
+$$
+
+similarly for $$b_1$$ and $$b_2$$.
+
+Depending on the forms of the activations functions $$\sigma$$ and $$\varphi$$, we can fully derive the above derivatives.
 
 ### Implementation Notes
-TODO
+As we have seen, the important part of training an ANN is deriving the derivatives of the loss function w.r.t. the network
+parameters. Luckily, some libraries such as **Theano** provide 
