@@ -57,8 +57,25 @@ We will apply the chain rule to derive the derivatives:
 
 $$
 \begin{align}
-\frac{\partial L}{\partial W_1} &= \frac{\partial L}{\partial \hat{y}} \ \frac{\partial \hat{y}}{\partial h} \ \frac{\partial h}{\partial W_1} \\
-\frac{\partial L}{\partial W_2} &= \frac{\partial L}{\partial \hat{y}} \ \frac{\partial \hat{y}}{\partial W_2}
+\frac{\partial L}{\partial W_1} 
+    &= \frac{\partial L}{\partial \hat{y}} \ \frac{\partial \hat{y}}{\partial h} \ \frac{\partial h}{\partial W_1} \\ 
+
+\frac{\partial L}{\partial W_2} 
+    &= \frac{\partial L}{\partial \hat{y}} \ \frac{\partial \hat{y}}{\partial W_2}
+\end{align}
+$$
+
+So,
+
+$$
+\begin{align}
+\frac{\partial L}{\partial W_1} 
+   &= \frac{\partial L}{\partial \hat{y}} \ \frac{\partial \varphi}{\partial (h W_2 + b_2)} \ 
+       \frac{\partial (h W_2 + b_2)}{\partial h} \ \frac{\partial \sigma}{\partial (x W_1 + b_1)} \ \frac{\partial (x W_1 + b_1)}{\partial W_1} \\
+
+\frac{\partial L}{\partial W_2}
+   &= \frac{\partial L}{\partial \hat{y}} \ \frac{\partial \varphi}{\partial (h W_2 + b_2)}
+       \frac{\partial (h W_2 + b_2)}{\partial W_2}
 \end{align}
 $$
 
@@ -67,5 +84,15 @@ similarly for $$b_1$$ and $$b_2$$.
 Depending on the forms of the activations functions $$\sigma$$ and $$\varphi$$, we can fully derive the above derivatives.
 
 ### Implementation Notes
-As we have seen, the important part of training an ANN is deriving the derivatives of the loss function w.r.t. the network
-parameters. Luckily, some libraries such as **Theano** provide 
+The most important part of implementing an ANN is deriving the derivatives of the loss function w.r.t. the network parameters. 
+As we have seen, the chain rule allows us to break the giant derivative of the loss function into derivatives of individual functions.
+A very nice implementation trick is explained in [Backprop in practice: Staged computation](//http://cs231n.github.io/optimization-2). 
+
+A **good news** is that we can skip deriving the loss function's derivative by utilizing **Theano** to do the heavy lifting for us.
+
+Here is an example of using Theano to calculate the value of the derivative of $$f(x) = x^2$$ at $$x = 4$$:
+
+{% gist fb9cd4d551045b726689 %}
+
+Finally, this is the Theano-based implementation of a simple MLP with one hidden layer with Iris data set.
+
