@@ -13,10 +13,14 @@ minimizing the loss function which measures the discrepancy between the network'
 In backpropagation, the errors (i.e. the differences between the prediction and the desired output) are backward propagated
 from the output layer to the input layer through the hidden layers. Weights in the network are adjusted to minimize these errors.
 
+<div style="text-align:center;">
+    <img src="/assets/2015-03-29-backpropagation/mlp-simple.png" width="85%" height="85%">
+    <p><em>Figure 1: A simple Mutillayer Perceptron network</em></p>
+</div>
+
 ### A Mathematical View
 Mathematically speakinng, backpropagation is mainly about taking derivative using chain rule. Let's take a look at 
-a simple Multilayer Perceptron (**MLP**) network with one hidden layer (as shown in Figure 1 -- 
-<span style="color: red; font-weight: bold;">TODO</span>).
+a simple Multilayer Perceptron (**MLP**) network with one hidden layer (as shown in Figure 1).
 
 $$
 \begin{align}
@@ -34,13 +38,13 @@ is often used for classification task.
 $$
 \begin{alignat} {2}
 L(Y, \hat{Y}) &= MSE(Y, \hat{Y}) &&= \frac{1}{N}\sum_{i=1}^N(y_i - \hat{y_i})^2 \quad (1)\\
-L(Y, \hat{Y}) &= \quad CE(Y, \hat{Y})  &&= -\sum_{i=1}^Ny_i \log\hat{y_i} \qquad \ (2)
+L(Y, \hat{Y}) &= \ \ CE(Y, \hat{Y})  &&= -\sum_{i=1}^Ny_i \log\hat{y_i} \qquad \ (2)
 \end{alignat}
 $$
 
 Training MLP networks is about finding values for the weight matrices $$W_1$$, $$W_2$$ and bias vectors $$b_1$$, $$b_2$$ to minimize 
-the loss function $$L$$. Since $$L$$ is a non-convex function w.r.t. $$W_1$$, $$W_2$$, $$b_1$$, $$b_2$$, we need to use
-Stochastic Gradient Descent (**SGD**) to get avoid of local minima and saddle points. 
+the loss function $$L$$. Since $$L$$ is a non-convex function w.r.t. $$W_1$$, $$W_2$$, $$b_1$$, $$b_2$$, we need to train the ANN model
+using Stochastic Gradient Descent (**SGD**) to get avoid of local minima and saddle points. 
 
 In SGD, at each iteration we randomly pick a training data point $$(x_i, y_i)$$ to update the parameters using the following formula:
 
@@ -86,11 +90,11 @@ Depending on the forms of the activations functions $$\sigma$$ and $$\varphi$$, 
 ### Implementation Notes
 The most important part of implementing an ANN is deriving the derivatives of the loss function w.r.t. the network parameters. 
 As we have seen, the chain rule allows us to break the giant derivative of the loss function into derivatives of individual functions.
-A very nice implementation trick is explained in [Backprop in practice: Staged computation](//http://cs231n.github.io/optimization-2). 
+A very nice implementation trick is explained in [Backprop in practice: Staged computation](//cs231n.github.io/optimization-2). 
 
-A **good news** is that we can skip deriving the loss function's derivative by utilizing **Theano** to do the heavy lifting for us.
+A **good news** is that we can skip deriving the loss function's derivative by utilizing [**Theano**](//deeplearning.net/software/theano/) to do the heavy lifting for us.
 
-Here is an example of using Theano to calculate the value of the derivative of $$f(x) = x^2$$ at $$x = 4$$:
+Here is an example of using Theano to calculate the value of the derivative of $$f(x) = y = x^2$$ at $$x = 4$$:
 
 {% gist fb9cd4d551045b726689 %}
 
