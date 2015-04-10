@@ -87,14 +87,14 @@ similarly for $$b_1$$ and $$b_2$$.
 
 Depending on the forms of the activations functions $$\sigma$$ and $$\varphi$$, we can fully derive the above derivatives.
 
-### Implementation Notes
+### Implementation
 The most important part of implementing an ANN is deriving the derivatives of the loss function w.r.t. the network parameters. 
 As we have seen, the chain rule allows us to break the giant derivative of the loss function into derivatives of individual functions.
 A very nice implementation trick is explained in [Backprop in practice: Staged computation](//cs231n.github.io/optimization-2). 
 
 A **good news** is that we can skip deriving the loss function's derivative by utilizing [**Theano**](//deeplearning.net/software/theano/) 
-to do the heavy lifting for us. A huge bonus of using Theano to implement neural networks is that the code can be accelerated 
-significantly when run on **GPU** without any changes.
+to do the heavy lifting for us. A huge bonus of using Theano to implement neural networks is that the code can be greatly 
+accelerated (without any changes) when running on the **GPU**.
 
 Here is an example of using Theano to calculate the value of the derivative of $$y = f(x) = x^2$$ at $$x = 4$$:
 
