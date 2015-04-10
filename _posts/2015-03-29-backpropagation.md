@@ -15,7 +15,7 @@ from the output layer to the input layer through the hidden layers. Weights in t
 
 <div style="text-align:center;">
     <img src="/assets/2015-03-29-backpropagation/mlp-simple.png" width="85%" height="85%">
-    <p><em>Figure 1: A simple Mutillayer Perceptron network</em></p>
+    <p><em>Figure 1: A simple MLP network</em></p>
 </div>
 
 ### A Mathematical View
@@ -92,11 +92,15 @@ The most important part of implementing an ANN is deriving the derivatives of th
 As we have seen, the chain rule allows us to break the giant derivative of the loss function into derivatives of individual functions.
 A very nice implementation trick is explained in [Backprop in practice: Staged computation](//cs231n.github.io/optimization-2). 
 
-A **good news** is that we can skip deriving the loss function's derivative by utilizing [**Theano**](//deeplearning.net/software/theano/) to do the heavy lifting for us.
+A **good news** is that we can skip deriving the loss function's derivative by utilizing [**Theano**](//deeplearning.net/software/theano/) 
+to do the heavy lifting for us. A huge bonus of using Theano to implement neural networks is that the code can be accelerated 
+significantly when run on **GPU** without any changes.
 
-Here is an example of using Theano to calculate the value of the derivative of $$f(x) = y = x^2$$ at $$x = 4$$:
+Here is an example of using Theano to calculate the value of the derivative of $$y = f(x) = x^2$$ at $$x = 4$$:
 
 {% gist fb9cd4d551045b726689 %}
 
-Finally, this is the Theano-based implementation of a simple MLP with one hidden layer with Iris data set.
+<br>
+Finally, this is a **Theano-based implementation** of the simple MLP with one hidden layer.
 
+{% gist 20089f4abf9706d0cdc4 %}
