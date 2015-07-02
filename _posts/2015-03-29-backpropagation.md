@@ -19,7 +19,7 @@ from the output layer to the input layer through the hidden layers. Weights in t
 </div>
 
 ### A Mathematical View
-Mathematically speakinng, backpropagation is mainly about taking derivative using chain rule. Let's take a look at 
+Mathematically speaking, backpropagation is mainly about taking derivative using chain rule. Let's take a look at 
 a simple Multilayer Perceptron (**MLP**) network with one hidden layer (as shown in Figure 1).
 
 $$
@@ -92,7 +92,7 @@ The most important part of implementing an ANN is deriving the derivatives of th
 As we have seen, the chain rule allows us to break the giant derivative of the loss function into derivatives of individual functions.
 A very nice implementation trick is explained in [Backprop in practice: Staged computation](//cs231n.github.io/optimization-2). 
 
-A **good news** is that we can skip deriving the loss function's derivative by utilizing [**Theano**](//deeplearning.net/software/theano/) 
+**Good news** is that we can skip deriving the loss function's derivative by utilizing [**Theano**](//deeplearning.net/software/theano/) 
 to do the heavy lifting for us. A huge bonus of using Theano to implement neural networks is that the code can be greatly 
 accelerated (without any changes) when running on the **GPU**.
 
