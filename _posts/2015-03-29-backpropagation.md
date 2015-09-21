@@ -19,7 +19,7 @@ from the output layer to the input layer through the hidden layers. Weights in t
 </div>
 
 ### A Mathematical View
-Mathematically speaking, backpropagation is mainly about taking derivative using chain rule. Let's take a look at 
+Backpropagation is mainly about taking derivative using chain rule. Let's take a look at 
 a simple Multilayer Perceptron (**MLP**) network with one hidden layer (as shown in Figure 1).
 
 $$
