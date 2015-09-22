@@ -19,8 +19,8 @@ from the output layer to the input layer through the hidden layers. Weights in t
 </div>
 
 ### A Mathematical View
-Backpropagation is mainly about taking derivative using chain rule. Let's take a look at 
-a simple Multilayer Perceptron (**MLP**) network with one hidden layer (as shown in Figure 1).
+Most computation for backpropagation is actually computing derivative of the loss function using chain rule. 
+Let's take a look at a simple Multilayer Perceptron (**MLP**) network with one hidden layer (as shown in Figure 1).
 
 $$
 \begin{align}
@@ -37,10 +37,13 @@ is often used for classification task.
 
 $$
 \begin{alignat} {2}
-L(Y, \hat{Y}) &= MSE(Y, \hat{Y}) &&= \frac{1}{N}\sum_{i=1}^N(y_i - \hat{y_i})^2 \quad (1)\\
-L(Y, \hat{Y}) &= \ \ CE(Y, \hat{Y})  &&= -\sum_{i=1}^Ny_i \log\hat{y_i} \qquad \ (2)
+L(Y, \hat{Y}) &= MSE(Y, \hat{Y}) &&= \frac{1}{N}\sum_{i=1}^N(y_i - \hat{y}_i)^2 \quad (1)\\
+L(Y, \hat{Y}) &= \ \ CE(Y, \hat{Y})  &&= \frac{1}{N}\sum_{i=1}^N CE(y_i, \hat{y}_i) \qquad \ (2)
 \end{alignat}
 $$
+
+where $$CE(y_i, \hat{y_i}) = -\sum_{l=1}^L y_{il} \log\hat{y}_{il} $$ ($$L$$ is the number of labels and $$y_i$$ is encoded
+as one-hot vector, i.e. its component is 1 at the target index and 0 everywhere else).
 
 Training MLP networks is about finding values for the weight matrices $$W_1$$, $$W_2$$ and bias vectors $$b_1$$, $$b_2$$ to minimize 
 the loss function $$L$$. Since $$L$$ is a non-convex function w.r.t. $$W_1$$, $$W_2$$, $$b_1$$, $$b_2$$, we need to train the ANN model
