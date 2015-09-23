@@ -43,7 +43,7 @@ L(Y, \hat{Y}) &= \ \ CE(Y, \hat{Y})  &&= \frac{1}{N}\sum_{i=1}^N CE(y_i, \hat{y}
 $$
 
 where $$CE(y_i, \hat{y_i}) = -\sum_{l=1}^L y_{il} \log\hat{y}_{il} $$ ($$L$$ is the number of labels and $$y_i$$ is encoded
-as one-hot vector, i.e. its component is 1 at the target index and 0 everywhere else).
+as one-hot vector, i.e. its components are one at the target index and zeros everywhere else).
 
 Training MLP networks is about finding values for the weight matrices $$W_1$$, $$W_2$$ and bias vectors $$b_1$$, $$b_2$$ to minimize 
 the loss function $$L$$. Since $$L$$ is a non-convex function w.r.t. $$W_1$$, $$W_2$$, $$b_1$$, $$b_2$$, we need to train the ANN model
