@@ -10,4 +10,8 @@ github_username: vinhkhuc
 # Build settings
 markdown: kramdown
 
-#highlighter: rouge
+highlighter: rouge
+
+gems:
+  - jekyll-gist
+  - pygments.rb
