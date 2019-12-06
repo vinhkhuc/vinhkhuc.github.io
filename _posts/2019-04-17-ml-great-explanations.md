@@ -53,7 +53,7 @@ Most concise form of LSTM:
 <br>
 
 ### 3) Dot-product attention
-With query $$q^{1 x d}$$ , key $$K^{n x d}$$ and value $$V^{n x d}$$:
+With query $$q^{1 x d}$$ , keys $$K^{n x d}$$ and values $$V^{n x d}$$:
 
 $$
 \begin{align}
@@ -62,16 +62,17 @@ Attention(q, K, V) = softmax(qK^T) V
 $$
 
 The terms are borrowed from information retrieval. For each query q, we retrieve the weighted sum of all values 
-where the weights are determined by how the query matches with corresponding keys. The final result has the shape (1, d).
+where the weights are determined by how the query matches with corresponding keys. The final result has the shape 
+$$(1, d)$$.
 
-In **dot-product self-attention** used in NLP, the query $$q$$, key $$K$$ and value $$V$$ are the 
-linear transformations of word embedding vectors using the matrix $$W_q$$, $$W_k$$ and $$W_v$$ with the 
+In **dot-product self-attention** used in NLP, the query $$q_i$$, keys $$K$$ and values $$V$$ are the 
+linear transformations of word embedding vectors $$x_i^{1xd}$$ using the matrix $$W_q$$, $$W_k$$ and $$W_v$$ with the 
 same shape $$(d, d)$$:
 
 $$
-q_i = W_q x_i \\
-k_j = W_k x_j \\
-v_j = W_v x_j
+q_i = x_i W_q \\
+k_j = x_j W_k \\
+v_j = x_j W_v
 $$
 
 <p style="text-align: center">
