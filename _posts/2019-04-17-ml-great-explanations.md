@@ -6,11 +6,26 @@ title:  "ML Explanations"
 excerpt: "This post contains great explanations for various Machine Learning concepts."
 date:   2019-04-17 19:07:01
 ---
-**UPDATED: 2019-12-05**
+**UPDATED: 2020-08-12**
 
 This blog post contains concise explanations for various concepts and ideas in Machine Learning that I found useful.
 
-### 1) LSTM
+### 1) Basic Concepts
+
+#### a) Precision, recall, F1
+In fraud detection, the precision of 70% means that the detector is correct only 70% of the time. The recall of 95% 
+means that it can detect 95% of the frauds. For this kind of detection, we prefer the detector with high recall to
+the one with high precision and low recall.
+
+The F1 score is the metric that combines precision and recall. It gives more weight to the lower value.
+
+$$
+P = \frac { TP } { TP + FP } \\
+R = \frac { TP } { TP + FN } \\
+F1 = \frac { 2 } { \frac { 1 } { P } + \frac { 1 } { R } } = \frac { TP } { TP + \frac { FP + FN } { 2 }  } 
+$$
+
+### 2) LSTM
 
 Most concise form of LSTM:
 
@@ -30,7 +45,7 @@ Most concise form of LSTM:
 
 <br>
 
-### 2) CNN
+### 3) CNN
 
 <table style="width: 100%; text-align: center; border: 1px dotted black;">
   <tr>
@@ -52,7 +67,7 @@ Most concise form of LSTM:
 
 <br>
 
-### 3) Dot-product attention
+### 4) Dot-product attention
 With query $$q^{1 x d}$$ , keys $$K^{n x d}$$ and values $$V^{n x d}$$:
 
 $$
@@ -85,6 +100,6 @@ $$
 <br>
 
 <!--
-### 4) Transformers
+### 5) Transformers
 -->
 
