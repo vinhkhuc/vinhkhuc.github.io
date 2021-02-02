@@ -6,7 +6,7 @@ title:  "ML Explanations"
 excerpt: "This post contains great explanations for various Machine Learning concepts."
 date:   2019-04-17 19:07:01
 ---
-**UPDATED: 2020-08-12**
+**UPDATED: 2021-02-02**
 
 This blog post contains concise explanations for various concepts and ideas in Machine Learning that I found useful.
 
@@ -98,6 +98,19 @@ $$
 </p>
 
 <br>
+
+<table style="width: 100%; text-align: center; border: 0px;">
+  <tr>
+    <td><img width="600px" src="/assets/2019-04-17-ml-great-explanations/transformers-self-attention.png"></td>
+  </tr>
+</table>
+
+<p style="text-align: center">
+    Source: Dan Jurafsky and James H. Martin's book 
+    <a href="https://web.stanford.edu/~jurafsky/slp3/">
+        "Speech and Language Processing"
+    </a>
+</p>
 
 <!--
 ### 5) Transformers
