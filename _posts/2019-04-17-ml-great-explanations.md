@@ -6,11 +6,11 @@ title:  "ML Explanations"
 excerpt: "This post contains great explanations for various Machine Learning concepts."
 date:   2019-04-17 19:07:01
 ---
-**UPDATED: 2021-02-02**
+**UPDATED: 2021-09-14**
 
 This blog post contains concise explanations for various concepts and ideas in Machine Learning that I found useful.
 
-### 1) Basic Concepts
+### 1) Basic Concepts/Techniques
 
 #### a) Precision, recall, F1
 In fraud detection, the precision of 70% means that the detector is correct only 70% of the time. The recall of 95% 
@@ -24,6 +24,16 @@ P = \frac { TP } { TP + FP } \\
 R = \frac { TP } { TP + FN } \\
 F1 = \frac { 2 } { \frac { 1 } { P } + \frac { 1 } { R } } = \frac { TP } { TP + \frac { FP + FN } { 2 }  } 
 $$
+
+#### b) Simple Approach for Document Similarity
+Given two documents $$D_1 = [w^1_1, w^1_2, ..., w^1_n]$$ and $$D_2 = [w^2_1, w^2_2, ..., w^2_m]$$, their similarity can be computed
+by computing the cosine similarity scores between every word $$w^1_i$$ fron $$D_1$$ and word $$w^2_j$$ from $$D_2$$, then taking their average as follows:
+
+$$ sim(D_1, D_2) = \frac{1}{n*m}\sum^{n}_{i=1}\sum^{m}_{j=1}{cos(v(w^1_i), v(w^2_j))} $$
+
+That is equivalent to measuring the cosine similarity scores between two average vectors $$v(D_1)$$ and $$v(D_2)$$:
+
+$$ sim(D_1, D_2) = cos(v(D_1), v(D_2)) = cos(\frac{1}{n}\sum^{n}_{i=1}{v(w^1_i)}, \frac{1}{m}\sum^{m}_{j=1}{v(w^2_j)}) $$
 
 ### 2) LSTM
 
