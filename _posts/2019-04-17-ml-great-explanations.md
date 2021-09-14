@@ -37,6 +37,11 @@ $$ sim(D_1, D_2) = v(D_1) \cdot v(D_2) = \frac{1}{n}\sum^{n}_{i=1}{v(w^1_i)} \cd
 
 Here, we assume that word's embedding vectors $$ v(w) $$ are already normalized to have unit lengths.
 
+#### c) Relationship Between Euclidean Distances and Cosine Similarity Scores
+Given two vectors $$v_1$$ and $$v_2$$ having unit lengths, their Euclidean distance and cosine similarity score are related as follows:
+
+$$ {\lVert v_1 - v_2 \rVert}^2 = (v_1 - v_2)^T \cdot (v_1 - v_2) = {\lVert v_1 \rVert}^2 + {\lVert v_2 \rVert}^2 - 2 * {v_1}^T \cdot {v_2} = 2 * (1 - cos(v_1, v_2)) $$
+
 ### 2) LSTM
 
 Most concise form of LSTM:
