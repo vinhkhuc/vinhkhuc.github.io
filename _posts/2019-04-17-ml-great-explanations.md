@@ -27,7 +27,7 @@ $$
 
 #### b) Simple Approach for Document Similarity
 Given two documents $$D_1 = [w^1_1, w^1_2, ..., w^1_n]$$ and $$D_2 = [w^2_1, w^2_2, ..., w^2_m]$$, their similarity can be calculated
-as the average of the cosine similarity scores between every word $$w^1_i$$ fron $$D_1$$ and word $$w^2_j$$ from $$D_2$$:
+as the average of all the cosine similarity scores $$ cos(w^1_i, w^2_j) $$, where $$w^1_i \in D_1, w^2_j \in D_2$$:
 
 $$ sim(D_1, D_2) = \frac{1}{n*m}\sum^{n}_{i=1}\sum^{m}_{j=1}{v(w^1_i) \cdot v(w^2_j)} $$
 
