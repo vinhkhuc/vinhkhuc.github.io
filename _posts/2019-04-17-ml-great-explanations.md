@@ -89,7 +89,7 @@ With query $$q^{1 x d}$$ , keys $$K^{n x d}$$ and values $$V^{n x d}$$:
 
 $$
 \begin{align}
-Attention(q, K, V) = softmax(qK^T) V
+Attention(q, K, V) = softmax(\frac{qK^T}{\sqrt{d}}) V
 \end{align}
 $$
 
