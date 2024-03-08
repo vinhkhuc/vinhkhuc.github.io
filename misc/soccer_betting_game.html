@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soccer Betting Game</title>
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h2>Soccer Betting Game</h2>
+
+    <div id="gameInfo">
+        <p>Winning probability 60%</p>
+        <p>Starting cash: $<span id="startingCash">100</span></p>
+        <p>Current cash: $<span id="currentCash">100</span></p>
+        <p>Rounds played: <span id="roundsPlayed">0</span> / 10</p>
+    </div>
+
+    <div id="betting">
+        <label for="betAmount">Bet Amount:</label>
+        <input type="number" id="betAmount" min="1" max="100" required>
+        <button id="placeBet">Place Bet</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            var currentCash = 100;
+            var roundsPlayed = 0;
+
+            $("#placeBet").click(function() {
+                var betAmount = $("#betAmount").val();
+            
+                // Check if betAmount is blank or not a number
+                if (betAmount === '' || isNaN(betAmount)) {
+                    alert("Bet amount cannot be blank and must be a number.");
+                    return;
+                }
+            
+                betAmount = parseInt(betAmount);
+            
+                // Check if betAmount is less than or equal to 0
+                if (betAmount <= 0) {
+                    alert("Bet amount must be greater than 0.");
+                    return;
+                }
+                
+                if (betAmount > currentCash) {
+                    alert("You cannot bet more than your current cash!");
+                    return;
+                }
+
+                var winProbability = 0.6;
+                var roundResult = Math.random() < winProbability;
+                roundsPlayed++;
+
+                if (roundResult) {
+                    // Player wins
+                    currentCash += betAmount;
+                    $("#result").html("You won! Current cash: $" + currentCash);
+                } else {
+                    // Player loses
+                    currentCash -= betAmount;
+                    $("#result").html("You lost! Current cash: $" + currentCash);
+                }
+
+                updateGameInfo();
+
+                if (currentCash <= 0 || roundsPlayed >= 10) {
+                    endGame();
+                }
+            });
+
+            function updateGameInfo() {
+                $("#currentCash").text(currentCash);
+                $("#roundsPlayed").text(roundsPlayed);
+            }
+
+            function endGame() {
+                $("#betting").hide();
+                var finalMessage = currentCash <= 0 ? "Game over! You've lost all your money." : "Game over! Rounds completed.";
+                $("#result").html(finalMessage + " Final cash: $" + currentCash);
+            }
+        });
+    </script>
+</body>
+</html>
